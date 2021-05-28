@@ -1,2 +1,0 @@
--- Users table seeds here 
-
