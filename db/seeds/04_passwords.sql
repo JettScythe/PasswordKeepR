@@ -1,11 +1,11 @@
 INSERT INTO passwords (WEBSITE_NAME, WEBSITE_USERNAME, WEBSITE_PASSWORD, ORGANIZATION_ID, CATAGORY_ID)
-VALUES ('zoom', 'Lighthouse-LHL', 'LL6Pcl/zTAILJ8iisP6EcTp05FYWPyJwscx66R6liuU=', 1, 2);
+VALUES ('zoom', 'Lighthouse-LHL', '$argon2i$v=19$m=4096,t=3,p=1$SX5sc9gOkbvc4wum7EDYRg$3ZlnlCa8+Si4tqbHAnRqMFvWu3QfH4zysPGX7buE0mI', 1, 2);
 
 INSERT INTO passwords (WEBSITE_NAME, WEBSITE_USERNAME, WEBSITE_PASSWORD, ORGANIZATION_ID, CATAGORY_ID)
-VALUES ('slack', 'Lighthouse-LHL', 'LL6Pcl/zTAILJ8iisP6EcTp05FYWPyJwscx66R6liuU=', 1, 2);
+VALUES ('slack', 'Lighthouse-LHL', '$argon2i$v=19$m=4096,t=3,p=1$SX5sc9gOkbvc4wum7EDYRg$3ZlnlCa8+Si4tqbHAnRqMFvWu3QfH4zysPGX7buE0mI', 1, 2);
 
 INSERT INTO passwords (WEBSITE_NAME, WEBSITE_USERNAME, WEBSITE_PASSWORD, ORGANIZATION_ID, CATAGORY_ID)
-VALUES ('compass', 'Lighthouse-LHL', 'LL6Pcl/zTAILJ8iisP6EcTp05FYWPyJwscx66R6liuU=', 1, 2);
+VALUES ('compass', 'Lighthouse-LHL', '$argon2i$v=19$m=4096,t=3,p=1$SX5sc9gOkbvc4wum7EDYRg$3ZlnlCa8+Si4tqbHAnRqMFvWu3QfH4zysPGX7buE0mI', 1, 2);
 
 INSERT INTO passwords (WEBSITE_NAME, WEBSITE_USERNAME, WEBSITE_PASSWORD, ORGANIZATION_ID, CATAGORY_ID)
-VALUES ('twitter', 'LighthouseLabs', 'LL6Pcl/zTAILJ8iisP6EcTp05FYWPyJwscx66R6liuU=', 1, 1);
+VALUES ('twitter', 'LighthouseLabs', '$argon2i$v=19$m=4096,t=3,p=1$SX5sc9gOkbvc4wum7EDYRg$3ZlnlCa8+Si4tqbHAnRqMFvWu3QfH4zysPGX7buE0mI', 1, 1);
