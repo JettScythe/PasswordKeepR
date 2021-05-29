@@ -18,11 +18,12 @@ module.exports = (obj) => {
     .then(user => {
       console.log('user:', user);
       if (!user) {
-        res.send({error: "error"});
+        res.send('wrong password');
         return;
       }
       // req.session.userId = user.id;
-      res.send(user);
+      console.log('logged in successfully');
+      res.redirect('/passwords');
     })
     .catch(e => res.send(e));
   })
