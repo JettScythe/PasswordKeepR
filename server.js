@@ -34,15 +34,18 @@ app.use(
 );
 app.use(express.static("public"));
 
+const obj = require('./helpers')
+
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const registerRoutes = require("./routes/register");
 const loginRoutes = require("./routes/login");
 
+
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/login", loginRoutes());
+app.use("/login", loginRoutes(obj));
 app.use("/api/users", usersRoutes(db));
 app.use("/register", registerRoutes());
 
