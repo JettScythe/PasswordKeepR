@@ -10,6 +10,7 @@ const addNewUser = async function(user) {
   try {
     const newUser = await db.query(`INSERT INTO users(NAME, EMAIL, USER_PASS, ORGANIZATION_ID) 
     VALUES ($1, $2, $3, $4) RETURNING *;`, [user.name, user.email, hash, user.organization_id])
+    return newUser.rows[0]
   } catch (err) {
     console.log(err.message);
   }
@@ -19,6 +20,7 @@ exports.addNewUser = addNewUser;
 const getUserByEmail = async function(email) {
   try {
     const user = await db.query(`SELECT * FROM users WHERE email = $1`, [email])
+    return user.rows[0];
   } catch (err) {
     console.log(err.message)
   }
@@ -30,7 +32,7 @@ const authenticateUser = async function(email, password) {
   try {
     let user = await getUserByEmail(email);
     if (await argon2.verify(user.user_pass, password)) {
-      return user
+      return user.rows[0]
     } else {
       user = null;
       return user;
