@@ -56,10 +56,31 @@ exports.authenticateUser = authenticateUser;
 const getAllPasswords = async function (organization_id) {
   try {
     const passwords = await db.query(`SELECT * FROM PASSWORDS WHERE organization_id = $1`, [organization_id]);
-    console.log(passwords.rows)
     return passwords.rows;
   } catch (err) {
     console.error(err.message);
   }
 };
 exports.getAllPasswords = getAllPasswords;
+
+
+const generatePassword = (options) => {
+  options.password_length
+  options.contains_lowercase
+  options.contains_uppercase
+  options.contains_numbers
+  options.contains_symbols
+};
+exports.generatePassword = generatePassword;
+
+
+const addNewPassword = async function(passwordObj, organization_id) {
+  try {
+    const newPassword = await db.query(`INSERT INTO passwords(WEBSITE_NAME, WEBSITE_USERNAME, WEBSITE_PASSWORD, ORGANIZATION_ID, CATAGORY_ID)
+    VALUES($1, $2, $3, $4, $5) RETURNING *;`, [password.website_name, password.website_username, password.website_password, orgID, password.catagory_id]);
+    return newPassword;
+  } catch (err) {
+    console.error(err.message)
+  }
+};
+exports.addNewPassword = addNewPassword;
