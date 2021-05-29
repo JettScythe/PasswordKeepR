@@ -29,6 +29,9 @@
         <div class='login-col'>
           <input type='password' name='password' placeholder='Password'>
         </div>
+        <% if (error === true) { %>
+          Email password combination is incorrect
+        <% } %>
         <button type='submit'>Login</button>
       </form>
       <a href='/register' class='button'>Register</a>
