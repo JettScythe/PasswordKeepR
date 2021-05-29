@@ -8,7 +8,7 @@ db.connect();
 const addNewUser = async function(user) {
   const hash = await argon2.hash(user.user_pass);
   try {
-    const newUser = await db.query(`INSERT INTO users(NAME, EMAIL, USER_PASS, ORGANIZATION_ID) 
+    const newUser = await db.query(`INSERT INTO users(NAME, EMAIL, USER_PASS, ORGANIZATION_ID)
     VALUES ($1, $2, $3, $4) RETURNING *;`, [user.name, user.email, hash, user.organization_id])
     return newUser.rows[0]
   } catch (err) {
@@ -31,8 +31,9 @@ const authenticateUser = async function(email, password) {
   // retrieve the user with that email
   try {
     let user = await getUserByEmail(email);
-    if (await argon2.verify(user.user_pass, password)) {
-      return user.rows[0]
+    if (await argon2.verify(user.user_password, password)) {
+      console.log('authenticate user success!');
+      return user;
     } else {
       user = null;
       return user;
