@@ -1,45 +1,53 @@
-const argon2 = require('argon2');
-const { Pool } = require('pg');
-const dbParams = require('./lib/db.js');
+const argon2 = require("argon2");
+const { Pool } = require("pg");
+const dbParams = require("./lib/db.js");
 const db = new Pool(dbParams);
 db.connect();
 
-
-const addNewUser = async function(user) {
-  const hash = await argon2.hash(user.user_pass);
+const addNewUser = async function (user) {
   try {
-    const newUser = await db.query(`INSERT INTO users(NAME, EMAIL, USER_PASS, ORGANIZATION_ID)
-    VALUES ($1, $2, $3, $4) RETURNING *;`, [user.name, user.email, hash, user.organization_id])
-    return newUser.rows[0]
+    const hash = await argon2.hash(user.user_password);
+    const newUser = await db.query(
+      `INSERT INTO users(NAME, EMAIL, USER_PASSWORD, ORGANIZATION_ID)
+    VALUES ($1, $2, $3, $4) RETURNING *;`,
+      [user.name, user.email, hash, user.organization_id]
+    );
+    return newUser.rows[0];
   } catch (err) {
-    console.log(err.message);
+    console.log("error:", err.message);
   }
 };
 exports.addNewUser = addNewUser;
 
-const getUserByEmail = async function(email) {
+const getUserByEmail = async function (email) {
   try {
-    const user = await db.query(`SELECT * FROM users WHERE email = $1`, [email])
+    const user = await db.query(`SELECT * FROM users WHERE email = $1`, [
+      email,
+    ]);
+    if (user.rows.length === 0) {
+      console.log("this bitch is undefined");
+      return null;
+    }
     return user.rows[0];
   } catch (err) {
-    console.log(err.message)
+    console.log(err.message);
   }
 };
 exports.getUserByEmail = getUserByEmail;
 
-const authenticateUser = async function(email, password) {
+const authenticateUser = async function (email, password) {
   // retrieve the user with that email
   try {
     let user = await getUserByEmail(email);
     if (await argon2.verify(user.user_password, password)) {
-      console.log('authenticate user success!');
+      console.log("authenticate user success!");
       return user;
     } else {
       user = null;
       return user;
     }
   } catch (err) {
-    console.log(err.message)
+    console.log(err.message);
   }
 };
 exports.authenticateUser = authenticateUser;
