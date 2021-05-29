@@ -13,7 +13,7 @@ module.exports = (obj) => {
       name: req.body.name,
       email: req.body.email,
       user_password: req.body.user_password,
-      organization_id: Number(req.body.organization_id),
+      organization_name: req.body.organization_name,
     };
 
     obj
