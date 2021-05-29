@@ -20,6 +20,7 @@ module.exports = (obj) => {
           return res.send("user already exists");
         }
         obj.addNewUser(users).then((user) => {
+          req.session['user_id'] = user.id;
           return res.send("added user");
         });
       })
