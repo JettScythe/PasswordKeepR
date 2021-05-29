@@ -56,8 +56,10 @@ exports.authenticateUser = authenticateUser;
 const getAllPasswords = async function (organization_id) {
   try {
     const passwords = await db.query(`SELECT * FROM PASSWORDS WHERE organization_id = $1`, [organization_id]);
+    console.log(passwords.rows)
     return passwords.rows;
   } catch (err) {
     console.error(err.message);
   }
 };
+exports.getAllPasswords = getAllPasswords;

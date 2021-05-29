@@ -54,7 +54,7 @@ const logoutRoutes = require("./routes/logout");
 // Note: Feel free to replace the example routes below with your own
 app.use("/login", loginRoutes(obj));
 app.use("/register", registerRoutes(obj));
-app.use("/passwords", passwordRoutes());
+app.use("/passwords", passwordRoutes(obj));
 app.use("/logout", logoutRoutes());
 
 // Note: mount other resources here, using the same pattern above
