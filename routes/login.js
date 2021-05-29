@@ -9,7 +9,7 @@ module.exports = (obj) => {
     .then(user => {
       console.log('user:', user);
       if (!user) {
-        res.send('wrong password');
+        res.render('index.ejs', {error: true});
         return;
       }
       req.session['user_id'] = user.id;
@@ -21,4 +21,4 @@ module.exports = (obj) => {
     .catch(e => res.send(e));
   })
   return router;
-};
+}
