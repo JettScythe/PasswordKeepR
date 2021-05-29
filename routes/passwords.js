@@ -1,17 +1,21 @@
 const express = require('express');
 const router = express.Router();
-// const cookieSession = require('cookie-session');
 
-// const app = express();
-// app.use(cookieSession({
-//   name: 'session',
-//   keys: ['key1']
-// }));
+module.exports = (obj) => {
 
-module.exports = () => {
-
-  router.get('/', (req, res) => {
-    res.render('passwords');
+  router.get('/', async function (req, res) {
+    orgID = req.session['organization_id'];
+    const passwords = await obj.getAllPasswords(orgID)
+    .then(result => {
+      return result;
+    })
+    const templateVars = {
+      user_id: req.session['user_id'],
+      passwords
+    };
+    res.render('passwords', templateVars);
   })
   return router;
 };
+
+

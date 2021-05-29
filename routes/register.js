@@ -3,14 +3,17 @@ const router = express.Router();
 
 module.exports = (obj) => {
   router.get("/", (req, res) => {
-    res.render("register");
+    const templateVars = {
+      user_id: req.session['user_id'],
+    };
+    res.render("register", templateVars);
   });
   router.post("/", (req, res) => {
     const users = {
       name: req.body.name,
       email: req.body.email,
       user_password: req.body.user_password,
-      organization_id: Number(req.body.organization_id),
+      organization_name: req.body.organization_name,
     };
 
     obj

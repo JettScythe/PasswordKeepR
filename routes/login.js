@@ -13,6 +13,7 @@ module.exports = (obj) => {
         return;
       }
       req.session['user_id'] = user.id;
+      req.session['organization_id'] = user.organization_id;
       res.send(user);
       console.log('logged in successfully');
       res.redirect('/passwords');

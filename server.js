@@ -9,7 +9,7 @@ const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const app = express();
 const morgan = require("morgan");
-const cookieSession = require('cookie-session');
+const cookieSession = require("cookie-session");
 
 // PG database client/connection setup
 const { Pool } = require("pg");
@@ -24,36 +24,38 @@ db.connect();
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(
-//   "/styles",
-//   sass({
-//     src: __dirname + "/styles",
-//     dest: __dirname + "/public/styles",
-//     debug: true,
-//     outputStyle: "expanded",
-//   })
-// );
+app.use(
+  "/styles",
+  sass({
+    src: __dirname + "/styles",
+    dest: __dirname + "/public/styles",
+    debug: true,
+    outputStyle: "expanded",
+  })
+);
 app.use(express.static("public"));
-app.use(cookieSession({
-  name: 'session',
-  keys: ['key1', 'key2']
-}));
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["key1", "key2"],
+  })
+);
 
 const obj = require("./helpers");
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const usersRoutes = require("./routes/users");
 const registerRoutes = require("./routes/register");
 const loginRoutes = require("./routes/login");
-const passwords = require("./routes/passwords");
+const passwordRoutes = require("./routes/passwords");
+const logoutRoutes = require("./routes/logout");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/login", loginRoutes(obj));
-app.use("/api/users", usersRoutes(db));
 app.use("/register", registerRoutes(obj));
-app.use('/passwords', passwords());
+app.use("/passwords", passwordRoutes(obj));
+app.use("/logout", logoutRoutes());
 
 // Note: mount other resources here, using the same pattern above
 

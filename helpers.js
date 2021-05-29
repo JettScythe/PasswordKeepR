@@ -7,10 +7,11 @@ db.connect();
 const addNewUser = async function (user) {
   try {
     const hash = await argon2.hash(user.user_password);
+    const orgID = await db.query(`SELECT id FROM organizations WHERE name = $1`, [user.organization_name])
     const newUser = await db.query(
       `INSERT INTO users(NAME, EMAIL, USER_PASSWORD, ORGANIZATION_ID)
     VALUES ($1, $2, $3, $4) RETURNING *;`,
-      [user.name, user.email, hash, user.organization_id]
+      [user.name, user.email, hash, Number(orgID.rows[0]['id'])]
     );
     return newUser.rows[0];
   } catch (err) {
@@ -51,3 +52,14 @@ const authenticateUser = async function (email, password) {
   }
 };
 exports.authenticateUser = authenticateUser;
+
+const getAllPasswords = async function (organization_id) {
+  try {
+    const passwords = await db.query(`SELECT * FROM PASSWORDS WHERE organization_id = $1`, [organization_id]);
+    console.log(passwords.rows)
+    return passwords.rows;
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+exports.getAllPasswords = getAllPasswords;
