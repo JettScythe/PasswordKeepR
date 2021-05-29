@@ -1,0 +1,17 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  justify-content: space-between;
+  width: -webkit-fill-available;
+  align-items: center;
+  background-color: hsla(0, 0%, 77%, 1);
+}
+
+.login {
+  display: flex;
+}
+
+.logout {
+  display: flex;
+}
