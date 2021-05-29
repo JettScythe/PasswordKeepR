@@ -47,13 +47,15 @@ const obj = require("./helpers");
 // Note: Feel free to replace the example routes below with your own
 const registerRoutes = require("./routes/register");
 const loginRoutes = require("./routes/login");
-const passwords = require("./routes/passwords");
+const passwordRoutes = require("./routes/passwords");
+const logoutRoutes = require("./routes/logout");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/login", loginRoutes(obj));
 app.use("/register", registerRoutes(obj));
-app.use("/passwords", passwords());
+app.use("/passwords", passwordRoutes());
+app.use("/logout", logoutRoutes());
 
 // Note: mount other resources here, using the same pattern above
 

@@ -1,9 +1,13 @@
 const express = require('express');
 const router  = express.Router();
 
-router.post("/logout", (req, res) => {
-  // deletes cookie
-  req.session = null;
-  //redirect home
-  res.redirect("/");
-});
+
+module.exports = () => {
+  router.post("/", (req, res) => {
+    // deletes cookie
+    req.session = null;
+    //redirect home
+    res.redirect("/");
+  });
+  return router;
+};
