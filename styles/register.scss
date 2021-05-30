@@ -1,23 +1,47 @@
-body {
+form {
+  width: 40%;
+  margin: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 
-  .jumbotron {
-    margin: auto;
+  .form-group {
+    margin-bottom: 1em;
+  }
+
+  .form-control {
+    background-color: #c4c4c4;
+    color: white;
+
+    &::placeholder {
+      color: black;
+    }
+  }
+
+  .btn {
+    margin-bottom: 1em;
+  }
+
+  p {
+    font-size: 1em;
     text-align: center;
-    background-color: transparent;
+  }
+
+  h2 {
+    text-align: center;
   }
 }
 
-.register {
-  margin: auto;
-  margin-bottom: 1em;
-}
-
-.register-form {
+.title {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  margin: auto;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  margin: 5em auto;
+
+  h1 {
+    font-size: 4em;
+    font-weight: bold;
+  }
 }
