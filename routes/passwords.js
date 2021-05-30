@@ -11,6 +11,7 @@ module.exports = (obj) => {
     })
     const templateVars = {
       user_id: req.session['user_id'],
+      organization_id: req.session['organization_id'],
       passwords
     };
     res.render('passwords', templateVars);
