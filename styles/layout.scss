@@ -1,12 +1,38 @@
 // See: https://sass-lang.com/
+.home {
+  padding: 5em;
+  display: flex;
+  justify-content: space-between;
+  background-image: url(/images/safe.png);
+  min-height: 100vh;
 
-body {
-  background-color: #EEE;
-
-  h1 {
-    color: #244751;
+  .title {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: white;
   }
-  .login_col {
-    padding: 25px 0;
+
+  .login-section {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #666;
+    height: 500px;
+    align-content: center;
+    margin: auto;
+    box-shadow: 10px 20px;
+    border-radius: 10px;
+  }
+
+  form {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
   }
 }
