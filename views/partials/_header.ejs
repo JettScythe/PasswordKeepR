@@ -3,7 +3,7 @@
     <a class="navbar-brand" href="/">PasswordKeepR</a>
     <div>
       <% if (!user_id) { %>
-        <a href="/login" class="login btn btn-dark">login</a>
+        <a href="/login" class="login btn btn-secondary">login</a>
         <% } else { %>
           <form class="form-inline" method="POST" action="/logout">
             <input type ="submit" class="logout btn btn-secondary" value="Logout">
