@@ -1,13 +1,20 @@
 <header>
-  <nav class="d-flex justify-content-around navbar navbar-expand-md navbar-dark bg-dark">
+  <nav
+    class="
+      d-flex
+      justify-content-around
+      navbar navbar-expand-md navbar-dark
+      bg-dark
+    "
+  >
     <a class="navbar-brand" href="/">PasswordKeepR</a>
     <div>
       <% if (!user_id) { %>
-        <a href="/login" class="login btn btn-secondary">login</a>
-        <% } else { %>
-          <form class="form-inline" method="POST" action="/logout">
-            <input type ="submit" class="logout btn btn-secondary" value="Logout">
-          </form>
+      <a href="/" class="login btn btn-secondary">Login</a>
+      <% } else { %>
+      <form class="form-inline" method="POST" action="/logout">
+        <input type="submit" class="logout btn btn-secondary" value="Logout" />
+      </form>
       <% } %>
     </div>
   </nav>
