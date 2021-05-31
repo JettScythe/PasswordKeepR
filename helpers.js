@@ -64,43 +64,6 @@ const getAllPasswords = async function (organization_id) {
 exports.getAllPasswords = getAllPasswords;
 
 
-// generate char codes
-const genCharCodes = (num1, num2) => {
-  let result = [];
-  for (let i = num1; i <= num2; i++) {
-    result.push(i);    
-  }
-  return result;
-}
-
-const generatePassword = (options) => {
-  const lowercase = genCharCodes(97, 122);
-  const uppercase = genCharCodes(65, 90);
-  const numbers = genCharCodes(48, 57);
-  const symbols = genCharCodes(33, 47).concat(genCharCodes(58, 64)).concat(genCharCodes(91, 96)).concat(genCharCodes(123, 126));
-  let draftPass;
-  if (options.contains_lowercase) {
-    draftPass = draftPass.concat(lowercase);
-  }
-  if (options.contains_uppercase) {
-    draftPass = draftPass.concat(uppercase)
-  }
-  if (options.contains_numbers) {
-    draftPass = draftPass.concat(numbers);
-  }
-  if (options.contains_symbols) {
-    draftPass = draftPass.concat(symbols);
-  }
-  const finalPass = [];
-  for (let i = 0; i < options.password_length; i++) {
-    const charCodes = genCharCodes[Math.floor(Math.random() * draftPass.length)];
-    finalPass.push(String.fromCharCode(charCodes));
-  }
-  return finalPass.join('');
-};
-exports.generatePassword = generatePassword;
-
-
 const addNewPassword = async function(passwordObj, organization_id) {
   try {
     const newPassword = await db.query(`INSERT INTO passwords(WEBSITE_NAME, WEBSITE_USERNAME, WEBSITE_PASSWORD, ORGANIZATION_ID, CATAGORY_ID)

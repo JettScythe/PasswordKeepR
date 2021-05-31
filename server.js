@@ -50,6 +50,7 @@ const loginRoutes = require("./routes/login");
 const passwordRoutes = require("./routes/passwords");
 const logoutRoutes = require("./routes/logout");
 const apiPasswordsRoutes = require('./routes/allPasswords')
+const passwordsGenerateRoutes = require('./routes/passwordsGenerate')
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -58,6 +59,7 @@ app.use("/register", registerRoutes(obj));
 app.use("/passwords", passwordRoutes(obj));
 app.use("/logout", logoutRoutes());
 app.use('/api/passwords', apiPasswordsRoutes(db));
+app.use('/passwords/generate', passwordsGenerateRoutes(obj));
 
 // Note: mount other resources here, using the same pattern above
 
