@@ -4,25 +4,21 @@ const router  = express.Router();
 module.exports = (db) => {
 
   router.post('/', (req, res) => {
-    const username = req.body.website_username;
-    const password = req.body.website_password;
-    const website = req.body.website_name;
+    const body = req.body;
 
-    console.log('HELLO')
-
-    if (username) {
-      db.query(`UPDATE passwords SET website_username = $1 WHERE website_name = $2 RETURNING *;`, [username, website])
+    if (body.username) {
+      db.query(`UPDATE passwords SET website_username = $1 WHERE website_name = $2 RETURNING *;`, [body.username, body.web_name])
     }
 
-    if (password) {
-      db.query(`UPDATE passwords SET website_password = $1 WHERE website_name = $2 RETURNING *;`, [password, website])
+    if (body.password) {
+      db.query(`UPDATE passwords SET website_password = $1 WHERE website_name = $2 RETURNING *;`, [body.password, body.web_name])
     }
 
-    if (username && password) {
-      db.query(`UPDATE passwords SET website_username = $1, website_password = $2 WHERE website_name = $3 RETURNING *;`, [username, password, website])
+    if (body.username && body.password) {
+      db.query(`UPDATE passwords SET website_username = $1, website_password = $2 WHERE website_name = $3 RETURNING *;`, [body.username, body.password, body.web_name])
     }
-    res.redirect('/passwords');
+    res.send('success');
   })
-  
+
   return router;
 };

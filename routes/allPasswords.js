@@ -28,7 +28,8 @@ module.exports = (db) => {
     ).then(res => {
       return res.rows;
     }).catch(err => console.log('error from post request:', err));
-    res.redirect('/passwords');
+    // res.redirect('/passwords');
+    res.send('success');
   });
 
   return router;
