@@ -1,6 +1,6 @@
 const renderPasswords = () => {$.ajax({
     type: 'GET',
-    url: '/api/passwords',
+    url: '/passwords/new',
     success: function(passwords) {
       $.each(passwords, (index, password) => {
         $('.passwords_container').append(`

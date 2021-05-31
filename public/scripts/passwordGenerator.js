@@ -64,7 +64,7 @@ $(document).ready(function() {
     alert('Password Copied to Clipboard');
 });
 
-form.addEventListener('click', (event) => {
+form.addEventListener('submit', (event) => {
   event.preventDefault();
   const characterAmount = lengthDOM.value;
   const includeLowercase = lowercaseDOM.checked;
