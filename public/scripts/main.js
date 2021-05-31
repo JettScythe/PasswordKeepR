@@ -47,39 +47,9 @@ const renderPasswords = () => {$.ajax({
 
 renderPasswords();
 
-
-
-
-
-
 $('.toggle_add_account').on('click', () => {
   return $('.add_account').slideToggle();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 $('.add_new').submit(event => {
   // alert('succes...');
