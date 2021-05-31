@@ -9,7 +9,7 @@ const renderPasswords = () => {$.ajax({
             <p>username: ${password.website_username}</p>
             <p>password: ${password.website_password}</p>
             <button class="btn btn-primary toggle_edit" type="button">edit</button>
-            <form method="post" autocomplete="off" autofill="off" class='edit_info'>
+            <form method="post" autocomplete="off" autofill="off" class='edit_info_${index}'>
               <div class="form-group">
                 <input
                   type="text"
@@ -84,7 +84,6 @@ $('.passwords_container').on('submit', '.edit_info', (event) => {
 
 
 $('.passwords_container').on('click', '.toggle_edit', (event) => {
-  console.log('event within toggle', event);
-  console.log('this', $(this), typeof $(this)['0'].confirm);
-  return $(this).slideToggle();
+  console.log(event.currentTarget.nextElementSibling);
+  return $(event.currentTarget.nextElementSibling).slideToggle();
 })
