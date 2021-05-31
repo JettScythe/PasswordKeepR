@@ -8,7 +8,37 @@ const renderPasswords = () => {$.ajax({
             <header>website: ${password.website_name}</header>
             <p>username: ${password.website_username}</p>
             <p>password: ${password.website_password}</p>
-          </div>
+            <button class="btn btn-primary" type="button">edit</button>
+            <form action="/passwords/edit" method="post" autocomplete="off" autofill="off" class='add_new'>
+  <div class="form-group">
+    <input
+      type="text"
+      class="form-control"
+      name="website_name"
+      placeholder="Website Name"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      type="text"
+      class="form-control"
+      name="website_username"
+      placeholder="username"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      type="password"
+      class="form-control"
+      name="website_password"
+      id = "new_password"
+      placeholder="password"
+    />
+
+  </div>
+
+  <button class="btn btn-primary" type="submit">Add Password</button>
+</form>
         `);
       })
     }
