@@ -8,37 +8,35 @@ const renderPasswords = () => {$.ajax({
             <header>website: ${password.website_name}</header>
             <p>username: ${password.website_username}</p>
             <p>password: ${password.website_password}</p>
-            <button class="btn btn-primary" type="button">edit</button>
-            <form action="/passwords/edit" method="post" autocomplete="off" autofill="off" class='add_new'>
-  <div class="form-group">
-    <input
-      type="text"
-      class="form-control"
-      name="website_name"
-      placeholder="Website Name"
-    />
-  </div>
-  <div class="form-group">
-    <input
-      type="text"
-      class="form-control"
-      name="website_username"
-      placeholder="username"
-    />
-  </div>
-  <div class="form-group">
-    <input
-      type="password"
-      class="form-control"
-      name="website_password"
-      id = "new_password"
-      placeholder="password"
-    />
-
-  </div>
-
-  <button class="btn btn-primary" type="submit">Add Password</button>
-</form>
+            <button class="btn btn-primary toggle_edit" type="button">edit</button>
+            <form method="POST" autocomplete="off" autofill="off" class='edit_info_${index}'>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="web_name_${index}"
+                  name="website_name"
+                  placeholder="Website Name"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="username_${index}"
+                  name="website_username"
+                  placeholder="username"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="password"
+                  class="password_${index}"
+                  name="website_password"
+                  placeholder="password"
+                />
+              </div>
+              <button class="btn btn-primary" type="submit">Add Password</button>
+            </form>
+          </div>
         `);
       })
     }
@@ -52,20 +50,43 @@ $('.toggle_add_account').on('click', () => {
 });
 
 $('.add_new').submit(event => {
-  // alert('succes...');
-  // console.log('this works');
-  // const data = $(this).serialize();
   const name = $('#web_name').val();
   const username = $('#web_username').val();
   const password = $('#new_password').val();
-  console.log('msg:', web_name);
   event.preventDefault();
   $.post('/passwords/new', { name, username, password })
   .then((res) => {
     $('.passwords_container').empty();
-    console.log('response from submit:', res);
     renderPasswords();
   }).catch(err => {
-    console.log('error from ajax request:', err);
+    console.log('error from submit new password request:', err);
   })
+})
+
+
+
+$('.passwords_container').on('click', '.toggle_edit', (event) => {
+  $(event.currentTarget.nextElementSibling).slideToggle();
+
+  const form = $(event.currentTarget.nextElementSibling).attr('class');
+  const index = form.slice(-1);
+  console.log('index:', index);
+
+  $('.passwords_container').on('submit', `.edit_info_${index}`, (event) => {
+    event.preventDefault();
+    console.log(`this event is: ${event.currentTarget}`)
+    const web_name = $(`.web_name_${index}`).val();
+    const username = $(`.username_${index}`).val();
+    const password = $(`.password_${index}`).val();
+    console.log('submitted edit info form successfully');
+    console.log('from within ajax:', web_name, username, password);
+    $.post('/passwords/edit', { web_name, username, password })
+    .then((res) => {
+      $('.passwords_container').empty();
+      renderPasswords();
+    }).catch(err => {
+      console.log('error from edit password request:', err);
+    })
+  });
+  return;
 })
