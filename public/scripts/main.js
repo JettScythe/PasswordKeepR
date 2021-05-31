@@ -5,9 +5,9 @@ const renderPasswords = () => {$.ajax({
       $.each(passwords, (index, password) => {
         $('.passwords_container').append(`
           <div class='display_password'>
-            <header>${password.website_name}</header>
-            <p>${password.website_username}</p>
-            <p>${password.website_password}</p>
+            <header>website: ${password.website_name}</header>
+            <p>username: ${password.website_username}</p>
+            <p>password: ${password.website_password}</p>
           </div>
         `);
       })
