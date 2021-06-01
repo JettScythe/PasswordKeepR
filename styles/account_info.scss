@@ -1,0 +1,38 @@
+.title {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 40px;
+  text-align: center;
+}
+
+#body {
+  .container {
+    display: grid;
+    flex-direction: column;
+    margin: auto;
+    width: 50%;
+  }
+  .detail:hover {
+    color: blue;
+    text-decoration: underline;
+  }
+  .detail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 40px;
+    margin: 0;
+
+    .section {
+      width: 180px;
+      margin: 0;
+    }
+    .section_info {
+      width: 450px;
+      margin: 0;
+    }
+    a {
+      font-size: 12px;
+    }
+  }
+}
