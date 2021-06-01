@@ -49,8 +49,8 @@ const registerRoutes = require("./routes/register");
 const loginRoutes = require("./routes/login");
 const passwordRoutes = require("./routes/passwords");
 const logoutRoutes = require("./routes/logout");
-const passwordsNewRoutes = require('./routes/allPasswords');
-const editPasswordRoutes = require('./routes/editPasswords');
+const passwordsNewRoutes = require("./routes/allPasswords");
+const editPasswordRoutes = require("./routes/editPasswords");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -58,9 +58,8 @@ app.use("/login", loginRoutes(obj));
 app.use("/register", registerRoutes(obj));
 app.use("/passwords", passwordRoutes(obj));
 app.use("/logout", logoutRoutes());
-app.use('/passwords/new', passwordsNewRoutes(db));
+app.use("/passwords/new", passwordsNewRoutes(db));
 app.use("/passwords/edit", editPasswordRoutes(db));
-
 
 // Note: mount other resources here, using the same pattern above
 
@@ -68,7 +67,7 @@ app.use("/passwords/edit", editPasswordRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  res.render("index", {error: false});
+  res.render("index", { error: false });
 });
 
 app.listen(PORT, () => {

@@ -7,6 +7,7 @@ const renderPasswords = () => {
         $(".passwords_container").append(`
 
           <div class='display_password'>
+          <p>${password.catagory_name}</p>
 
             <header>${password.website_name}</header>
             <p>username: ${password.website_username}</p>

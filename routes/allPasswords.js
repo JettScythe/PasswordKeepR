@@ -5,13 +5,19 @@ const helper = require("../helpers");
 module.exports = (db) => {
   router.get("/", (req, res) => {
     db.query(
-      `SELECT * FROM passwords WHERE organization_id = $1 ORDER BY catagory_id, website_name;`,
+      `SELECT passwords.*, catagories.name AS catagory_name
+      FROM passwords
+      JOIN catagories ON catagories.id = passwords.catagory_id
+      WHERE organization_id = $1
+      ORDER BY catagory_id, website_name;`,
       [req.session["organization_id"]]
     )
       .then((data) => {
         const passwords = data.rows;
+
         res.json(passwords);
       })
+
       .catch((err) => {
         res.status(500).json({ error: err.message });
       });
