@@ -7,10 +7,10 @@
       bg-dark
     "
   >
-    <a class="navbar-brand" href="/">PasswordKeepR</a>
+    <a class="navbar-brand" href="/passwords">PasswordKeepR</a>
     <div>
       <% if (!user_id) { %>
-      <a href="/" class="login btn btn-secondary">Login</a>
+        <a href="/" class="login btn btn-secondary">Login</a>
       <% } else { %>
       <form class="form-inline" method="POST" action="/logout">
         <input type="submit" class="logout btn btn-secondary" value="Logout" />
