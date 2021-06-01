@@ -1,6 +1,11 @@
 #navbar nav {
-
+  display: flex;
   justify-content: space-between;
   padding: 0.5% 2%;
 
+  .dropdown-toggle {
+    color: white;
+  }
 }
+
+
