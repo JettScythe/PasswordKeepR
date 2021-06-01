@@ -72,6 +72,7 @@ $('.passwords_container').on('click', '.toggle_edit', (event) => {
   $('.passwords_container').on('submit', `.edit_info_${index}`, (event) => {
     event.stopImmediatePropagation();
     event.preventDefault();
+    console.log(website)
     console.log(`this event is: ${event.currentTarget}`)
     //const web_name = $(`.web_name_${index}`).val();
     const username = $(`.username_${index}`).val();
