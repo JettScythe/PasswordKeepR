@@ -12,6 +12,10 @@
     margin: auto;
     width: 50%;
   }
+  .detail:hover {
+    color: blue;
+    text-decoration: underline;
+  }
   .detail {
     display: flex;
     flex-direction: row;
