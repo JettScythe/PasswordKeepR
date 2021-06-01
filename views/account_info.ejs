@@ -12,6 +12,7 @@
       integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   </head>
 
@@ -26,19 +27,20 @@
       <form class='detail'>
         <p class='section'>Email</p>
         <p class='section_info'><%= email %> </p>
-        <a type='submit'>Edit</a>
+        <a type='submit'><i class="fas fa-edit"></i>Edit</a>
       </form>
 
       <form class='detail'>
         <p class='section'>Name</p>
         <p class='section_info'><%= name %> </p>
-        <a type='submit'>Edit</a>
+        <a type='submit'><i class="fas fa-edit"></i>Edit</a>
       </form>
 
+      <!-- <%= user_password %> -->
       <form class='detail'>
-        <p class='section'>Organization</p>
-        <p class='section_info'><%= org_name %> </p>
-        <a type='submit'>Edit</a>
+        <p class='section'>Password</p>
+        <p class='section_info'>********</p>
+        <a type='submit'><i class="fas fa-edit"></i>Edit</a>
       </form>
 
 

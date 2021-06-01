@@ -15,6 +15,10 @@
   .detail:hover {
     color: blue;
     text-decoration: underline;
+    cursor: pointer;
+    i {
+      display: inline;
+    }
   }
   .detail {
     display: flex;
@@ -33,6 +37,9 @@
     }
     a {
       font-size: 12px;
+    }
+    i {
+      display: none;
     }
   }
 }
