@@ -24,6 +24,7 @@ module.exports = (obj) => {
         }
         obj.addNewUser(users).then((user) => {
           req.session["user_id"] = user.id;
+          req.session["organization_id"] = user.organization_id;
           return res.redirect("/passwords");
         });
       })

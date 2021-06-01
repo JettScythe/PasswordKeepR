@@ -5,10 +5,15 @@ const renderPasswords = () => {
     success: function (passwords) {
       $.each(passwords, (index, password) => {
         $(".passwords_container").append(`
+
           <div class='display_password'>
+
             <header>${password.website_name}</header>
             <p>username: ${password.website_username}</p>
-            <p>password: ${password.website_password}</p>
+            <p class="password_${index}">password: ${password.website_password}</p>
+            <div class="copy">
+              <button class="copy_${index}">Copy</button>
+            </div>
             <button class="btn btn-primary toggle_edit" type="button">edit</button>
             <form method="POST" autocomplete="off" autofill="off" class='edit_info_${index}'>
               <div class="form-group">
@@ -81,4 +86,28 @@ $(".passwords_container").on("click", ".toggle_edit", (event) => {
       });
   });
   return;
+});
+
+const copybtnDOM = document.getElementById("copy");
+
+$(".passwords_container").on("click", ".copy", (event) => {
+  event.preventDefault();
+
+  const classOfButton = $(event.currentTarget.children[0]).attr("class");
+  const index = classOfButton.slice(-1);
+
+  const passwordToCopy = $(`.password_${index}`).text().slice(10);
+
+  // Edge Case when Password is Empty
+  if (!passwordToCopy) return;
+
+  // Copy Functionality
+
+  const test = document.createElement("textarea");
+  document.body.appendChild(test);
+  test.value = passwordToCopy;
+
+  test.select();
+  document.execCommand("copy");
+  document.body.removeChild(test);
 });
