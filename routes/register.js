@@ -2,11 +2,23 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = (obj) => {
+
+  const isLoggedIn = function(req) {
+    if (req.session.organization_id) return req.session.user_id;
+    return false;
+  }
+
   router.get("/", (req, res) => {
-    const templateVars = {
-      user_id: req.session["user_id"],
-    };
-    res.render("register", templateVars);
+    const user_id = isLoggedIn(req);
+
+    if (user_id) {
+      res.redirect('/passwords');
+    } else {
+      const templateVars = {
+        user_id: req.session["user_id"],
+      };
+      res.render("register", templateVars);
+    }
   });
   router.post("/", (req, res) => {
     const users = {
