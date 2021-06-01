@@ -9,11 +9,17 @@ const renderPasswords = () => {
           <div class='display_password'>
           <p>${password.catagory_name}</p>
 
-            <header>${password.website_name}</header>
+            <header class='website_name_${index}'>${password.website_name}</header>
             <p>username: ${password.website_username}</p>
             <p class="password_${index}">password: ${password.website_password}</p>
             <div class="copy">
               <button class="copy_${index}">Copy</button>
+            </div>
+
+            <div class='delete'>
+              <form method="POST" autocomplete="off" autofill="off" class="delete_${index}">
+                <button class="btn btn-danger" type="submit">DELETE</button>
+              </form>
             </div>
             <button class="btn btn-primary toggle_edit" type="button">edit</button>
             <form method="POST" autocomplete="off" autofill="off" class='edit_info_${index}'>
@@ -95,6 +101,8 @@ $(".passwords_container").on("click", ".copy", (event) => {
   event.preventDefault();
 
   const classOfButton = $(event.currentTarget.children[0]).attr("class");
+  
+  //this is only going to work if the index is single digit. will have to fix this
   const index = classOfButton.slice(-1);
 
   const passwordToCopy = $(`.password_${index}`).text().slice(10);
@@ -111,4 +119,22 @@ $(".passwords_container").on("click", ".copy", (event) => {
   test.select();
   document.execCommand("copy");
   document.body.removeChild(test);
+});
+
+
+
+$(".passwords_container").on("submit", `.delete`, (event) => {
+  event.stopImmediatePropagation();
+  event.preventDefault();
+  const index = $(event.target).attr('class').slice(-1);
+  const website = $(`.website_name_${index}`)[0].outerText;
+  
+  $.post("/passwords/delete", { website })
+    .then((res) => {
+      $(".passwords_container").empty();
+      renderPasswords();
+    })
+    .catch((err) => {
+      console.log("error from edit password request:", err);
+    });
 });
