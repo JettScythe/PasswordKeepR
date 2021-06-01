@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Passwords</title>
+    <title>My Account</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/passwords.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/account_info.css" type="text/css" />
 
     <!-- Boostrap CSS -->
     <link
@@ -16,18 +13,36 @@
       crossorigin="anonymous"
     />
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/passwordGenerator.js"></script>
   </head>
 
-  <body>
+  <body id='body'>
     <%- include('partials/_header') %>
 
+    <div class='title'>
+      My account settings
+    </div>
+    <section class='container'>
 
-    <p>email: <%= email %></p>
-    <p>username: <%= name %></p>
-    <p>password: <%= user_password %></p>
-    <p>organization: <%= org_name %></p>
+      <form class='detail'>
+        <p class='section'>Email</p>
+        <p class='section_info'><%= email %> </p>
+        <a type='submit'>Edit</a>
+      </form>
+
+      <form class='detail'>
+        <p class='section'>Name</p>
+        <p class='section_info'><%= name %> </p>
+        <a type='submit'>Edit</a>
+      </form>
+
+      <form class='detail'>
+        <p class='section'>Organization</p>
+        <p class='section_info'><%= org_name %> </p>
+        <a type='submit'>Edit</a>
+      </form>
+
+
+    </section>
 
   </body>
 </html>
