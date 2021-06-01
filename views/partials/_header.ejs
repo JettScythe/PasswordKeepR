@@ -18,7 +18,9 @@
               My Account
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Account Info</a>
+              <form class="form-inline" method="GET" action="/passwords/account_info">
+                <input type="submit" class="dropdown-item" value="Account Info" />
+              </form>
               <form class="form-inline" method="POST" action="/logout">
                 <input type="submit" class="dropdown-item logout" value="Logout" />
               </form>
