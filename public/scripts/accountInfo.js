@@ -1,7 +1,7 @@
 //edit email
-$('.detail_email').on('click', () => {
+$('.edit_email.edit_button').on('click', () => {
   $('.edit_email').toggle();
-  $('.detail_email').off('click');
+  $('.new_email').focus();
 })
 $('.email_cancel').on('click', () => {
     $('.edit_email').toggle();
@@ -19,9 +19,8 @@ $('.edit_email.submit.button').on('click', (event) => {
 })
 
 //edit password
-$('.detail_password').on('click', () => {
+$('.edit_password.edit_button').on('click', () => {
   $('.edit_password').toggle();
-  $('.detail_password').off('click');
 })
 $('.password_cancel').on('click', () => {
     $('.edit_password').toggle();
@@ -39,9 +38,8 @@ $('.edit_password.submit.button').on('click', (event) => {
 
 
 //edit name
-$('.detail_name').on('click', () => {
+$('.edit_name.edit_button').on('click', () => {
   $('.edit_name').toggle();
-  $('.detail_name').off('click');
 })
 $('.name_cancel').on('click', () => {
     $('.edit_name').toggle();
