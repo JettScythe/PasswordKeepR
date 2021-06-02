@@ -11,8 +11,9 @@ $('.edit_email.submit.button').on('click', (event) => {
   $.post('/passwords/account_info/email', { email })
   .then(() => {
     $('.edit_email').css('display','none');
+    $('.detail_email').children().eq(1).html(`${email}`);
     $('.edit_email.edit_button').fadeIn();
-    $('.section_info.edit_email.submit').fadeIn();
+    $('.detail_email').children().eq(1).fadeIn();
   }).catch(err => console.log('update email error:', err));
   return;
 })
@@ -47,11 +48,12 @@ $('.name_cancel').on('click', () => {
 })
 $('.edit_name.submit.button').on('click', (event) => {
   const name = $('.new_name').val();
-  $.post('/names/account_info/name', { name })
+  $.post('/passwords/account_info/name', { name })
   .then(() => {
     $('.edit_name').css('display','none');
+    $('.detail_name').children().eq(1).html(`${name}`);
     $('.edit_name.edit_button').fadeIn();
-    $('.section_info.edit_name.submit').fadeIn();
+    $('.detail_name').children().eq(1).fadeIn();
   }).catch(err => console.log('update name error:', err));
   return;
 })
