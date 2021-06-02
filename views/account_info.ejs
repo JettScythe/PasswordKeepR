@@ -25,27 +25,50 @@
     </div>
     <section class='container'>
 
-      <form class='detail'>
+      <!-- update email -->
+      <form class='detail detail_email'>
         <p class='section'>Email</p>
-        <p class='section_info'><%= email %> </p>
-        <a type='submit'><i class="fas fa-edit"></i>Edit</a>
+        <p class='section_info edit edit_email'><%= email %> </p>
+        <div class='section_info edit edit_email submit'><input class='new_email' type='text' placeholder='New email' type='email'></div>
+        <p class='edit edit_email edit_button'><i class="fas fa-edit"></i>Edit<br>
+        <p class='edit edit_email submit button'></i>Submit<br>
+        <p class='edit_email cancel email_cancel'>Cancel</p>
       </form>
 
-      <form class='detail'>
+      <!-- update name -->
+      <form class='detail detail_name'>
         <p class='section'>Name</p>
-        <p class='section_info'><%= name %> </p>
-        <a type='submit'><i class="fas fa-edit"></i>Edit</a>
+        <p class='section_info edit edit_name'><%= name %> </p>
+
+        <div class='section_info edit submit edit_name'><input type='text' placeholder='New name' class='new_name'></div>
+        <p class='edit edit_name edit_button'><i class="fas fa-edit"></i>Edit<br>
+        <p class='edit submit edit_name button'></i>Submit<br>
+        <p class='edit_name cancel name_cancel'>Cancel</p>
       </form>
 
-      <!-- <%= user_password %> -->
-      <form class='detail'>
+
+
+      <!-- update password -->
+      <form class='detail detail_password'>
         <p class='section'>Password</p>
-        <p class='section_info'>********</p>
-        <a type='submit'><i class="fas fa-edit"></i>Edit</a>
+        <p class='section_info edit edit_password'>********</p>
+
+        <!-- input new password -->
+        <div class='section_info edit edit_password submit'><input type='text' placeholder='New password' class='new_password'></div>
+
+        <!-- edit button -->
+        <p class='edit edit_password edit_button'><i class="fas fa-edit"></i>Edit<br>
+
+        <!-- submit button -->
+        <p class='edit edit_password submit button'></i>Submit<br>
+
+        <!-- cancel button -->
+        <p class='edit_password cancel password_cancel'>Cancel</p>
       </form>
+
 
 
     </section>
-
+    <script type='text/javascript' src='/scripts/accountInfo.js'></script>
   </body>
 </html>
