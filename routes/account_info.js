@@ -27,7 +27,7 @@ module.exports = (db, obj) => {
     const id = req.session.user_id;
     const { name } = req.body;
     console.log('the new name is:', name);
-    obj.updateUserName();
+    obj.updateUserName(name, id);
     res.send();
   })
 

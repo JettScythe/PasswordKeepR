@@ -7,8 +7,10 @@ module.exports = (db) => {
     const body = req.body;
 
     console.log('edit password function took us here');
+    console.log(body);
 
     if (body.username) {
+      console.log('updating....');
       db.query(`UPDATE passwords SET website_username = $1 WHERE website_name = $2 RETURNING *;`, [body.username, body.website])
     }
 
