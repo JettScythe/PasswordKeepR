@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = (db) => {
+module.exports = (db, obj) => {
   router.get('/', (req, res) => {
     const user = req.session.user_id;
     db.query(`SELECT users.*, organizations.name as org_name FROM users
@@ -19,10 +19,7 @@ module.exports = (db) => {
   router.post('/email', (req, res) => {
     const id = req.session.user_id;
     const { email } = req.body;
-    db.query(`UPDATE users
-    SET email = $1
-    WHERE id = $2;`,
-    [email, id])
+    obj.updateUserEmail(email, id);
     res.send();
   })
 
@@ -30,20 +27,14 @@ module.exports = (db) => {
     const id = req.session.user_id;
     const { name } = req.body;
     console.log('the new name is:', name);
-    db.query(`UPDATE users
-    SET name = $1
-    WHERE id = $2;`,
-    [name, id])
+    obj.updateUserName();
     res.send();
   })
 
   router.post('/password', (req, res) => {
     const id = req.session.user_id;
     const { password } = req.body;
-    db.query(`UPDATE users
-    SET password = $1
-    WHERE id = $2;`,
-    [password, id])
+    obj.updateUserPassword(password, id);
     res.send();
   })
 

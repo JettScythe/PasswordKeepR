@@ -56,6 +56,50 @@ const authenticateUser = async function (email, password) {
 };
 exports.authenticateUser = authenticateUser;
 
+const updateUserEmail = async function (email, id) {
+  try {
+    const updatedUser = await db.query(`UPDATE users
+    SET email = $1
+    WHERE id = $2
+    RETURNING *;`,
+    [email, id]);
+    return updatedUser;
+  } catch (err) {
+    console.error(err.message)
+  }
+};
+exports.updateUserEmail = updateUserEmail;
+
+const updateUserName = async function (name, id) {
+  try {
+    const updatedUser = await db.query(`UPDATE users
+    SET name = $1
+    WHERE id = $2
+    RETURNING *;`,
+    [name, id]);
+    console.log(updatedUser);
+    return updatedUser;
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+exports.updateUserName = updateUserName;
+
+const updateUserPassword = async function (password, id) {
+  try {
+    const hash = await argon2.hash(password);
+    const updatedUser = await db.query(`UPDATE users
+    SET user_password = $1
+    WHERE id = $2
+    RETURNING *;`,
+    [hash, id]);
+    return updatedUser;
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+exports.updateUserPassword = updateUserPassword;
+
 const getAllPasswords = async function (organization_id) {
   try {
     const passwords = await db.query(
