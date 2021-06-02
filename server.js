@@ -64,7 +64,7 @@ app.use("/logout", logoutRoutes());
 app.use("/passwords/new", passwordsNewRoutes(db));
 app.use("/passwords/edit", editPasswordRoutes(db));
 app.use("/api/passwords/account_info", api_account_info_routes(db));
-app.use("/passwords/account_info", account_info_routes(db));
+app.use("/passwords/account_info", account_info_routes(db, obj));
 app.use("/passwords/delete", deletePasswordRoutes(db));
 
 // Note: mount other resources here, using the same pattern above
