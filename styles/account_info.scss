@@ -6,13 +6,15 @@
 }
 
 #body {
+  margin: auto;
+
   .container {
-    display: grid;
+    display: flex;
     flex-direction: column;
     margin: auto;
-    width: 50%;
+    align-items: center;
   }
-  .edit_button:hover {
+  .button:hover {
     color: blue;
     text-decoration: underline;
     cursor: pointer;
@@ -20,31 +22,53 @@
       display: inline;
     }
   }
+  .detail_email {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid rgb(189, 189, 189);
+  }
+  .detail_password {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top: 1px solid rgb(189, 189, 189);
+  }
   .detail {
     display: flex;
     flex-direction: row;
     align-items: flex-end;
-    height: 40px;
+    height: 50px;
     margin: 0;
-    font-size: 12.5px;
+    font-size: 14px;
+    padding: 14px;
+    background-color: rgb(238, 238, 238);
+
 
     * {
       margin: 0;
     }
+    .edit_button {
+      margin: auto;
+      margin: 0;
+      width: 120px;
+      text-align: center;
+      font-size: 12.5px;
+    }
 
     .section {
       width: 140px;
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 525;
     }
 
     //2nd column: where the info is displayed
     .section_info {
-      width: 450px;
+      width: 250px;
       input {
         width: 80%;
         border: none;
-        border-bottom: solid grey 1px;
+        // border-bottom: solid grey 1px;
+        background-color: rgb(238, 238, 238);
+        outline: none;
       }
     }
     i {
@@ -52,19 +76,21 @@
     }
     .submit {
       display: none;
-      border-radius: 2.5px;
     }
-    .submit.button {
+    .submit.button, .cancel {
+      border-radius: 2.5px;
       border: 1px solid grey;
-      width: 50px;
+      width: 55px;
+      height: 25px;
       text-align: center;
+      align-items: center;
+      font-size: 12px;
+      margin: 0 2.5px;
+      padding: 1px 6px;
+      vertical-align: middle;
     }
     .cancel {
       display: none;
-      border: 1px solid grey;
-      border-radius: 2.5px;
-      width: 50px;
-      text-align: center;
     }
   }
 }
