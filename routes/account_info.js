@@ -29,6 +29,7 @@ module.exports = (db) => {
   router.post('/name', (req, res) => {
     const id = req.session.user_id;
     const { name } = req.body;
+    console.log('the new name is:', name);
     db.query(`UPDATE users
     SET name = $1
     WHERE id = $2;`,
