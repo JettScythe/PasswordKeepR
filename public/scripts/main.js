@@ -67,8 +67,9 @@ $(".add_new").submit((event) => {
   const name = $("#web_name").val();
   const username = $("#web_username").val();
   const password = $("#new_password").val();
+  const category = $("#category_name").val();
   event.preventDefault();
-  $.post("/passwords/new", { name, username, password })
+  $.post("/passwords/new", { name, username, password, category })
     .then((res) => {
       $(".passwords_container").empty();
       renderPasswords();

@@ -23,16 +23,20 @@ module.exports = (db) => {
       });
   });
 
-  router.post("/", (req, res) => {
+  router.post("/", async (req, res) => {
     console.log("it made it to here....", req.body);
     const body = req.body;
     const orgID = req.session.organization_id;
+
+    const categorySelect = await db.query(`SELECT id FROM catagories WHERE name = $1`, [body.category]);
+    categoryID = categorySelect.rows[0].id;
+    
 
     db.query(
       `INSERT INTO passwords (website_name, website_username, website_password, organization_id, catagory_id)
       VALUES ($1, $2, $3, $4, $5)
       RETURNING *;`,
-      [body.name, body.username, body.password, orgID, 1]
+      [body.name, body.username, body.password, orgID, categoryID]
     )
       .then((res) => {
         return res.rows;
