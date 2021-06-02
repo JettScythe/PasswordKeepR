@@ -82,10 +82,8 @@ $(".passwords_container").on("click", ".toggle_edit", (event) => {
     event.stopImmediatePropagation();
     event.preventDefault();
     const website = event.target.parentElement.childNodes[3].innerHTML;
-    //console.log(event);
     const username = $(`.username_${index}`).val();
-    const password = $(`.password_${index}`).val();
-    console.log("password is: ", $(`.password_${index}`))
+    const password = $(`.password_${index}`)[1].value;
     $.post("/passwords/edit", { website, username, password })
       .then((res) => {
         $(".passwords_container").empty();
