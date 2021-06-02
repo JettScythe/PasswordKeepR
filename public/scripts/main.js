@@ -5,43 +5,52 @@ const renderPasswords = () => {
     success: function (passwords) {
       $.each(passwords, (index, password) => {
         $(".passwords_container").append(`
-
-          <div class='display_password'>
+        <div class='display_password'>
+        <div class="passwords-header">
           <p>${password.catagory_name}</p>
-
-            <header class='website_name_${index}'>${password.website_name}</header>
-            <p>username: ${password.website_username}</p>
-            <p class="password_${index}">password: ${password.website_password}</p>
-            <div class="copy">
-              <button class="copy_${index}">Copy</button>
-            </div>
-
-            <div class='delete'>
-              <form method="POST" autocomplete="off" autofill="off" class="delete_${index}">
-                <button class="btn btn-danger" type="submit">DELETE</button>
-              </form>
-            </div>
-            <button class="btn btn-primary toggle_edit" type="button">edit</button>
-            <form method="POST" autocomplete="off" autofill="off" class='edit_info_${index}'>
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="username_${index}"
-                  name="website_username"
-                  placeholder="username"
-                />
-              </div>
-              <div class="form-group">
-                <input
-                  type="password"
-                  class="password_${index}"
-                  name="website_password"
-                  placeholder="password"
-                />
-              </div>
-              <button class="btn btn-primary" type="submit">Add Password</button>
-            </form>
+          <div class='delete'>
+          <form method="POST" autocomplete="off" autofill="off" class="delete_${index}">
+            <button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i></button>
+          </form>
           </div>
+        </div>
+
+
+        <header class='website_name_${index}'>${password.website_name}</header>
+        <p>username: ${password.website_username}</p>
+        <div class = "password-field">
+        <p class="password_${index}">password: ${password.website_password}</p>
+        <div class="copy">
+          <button class="copy_${index}"><i class="fas fa-clipboard"></i></button>
+        </div>
+        </div>
+
+
+        <button class="btn btn-primary toggle_edit" type="button">edit</button>
+
+        <form method="POST" autocomplete="off" autofill="off" class='edit_info_${index}'>
+        <section>
+        <span class="close">&times;</span>
+          <div class="form-group">
+            <input
+              type="text"
+              class="username_${index} form-control"
+              name="website_username"
+              placeholder="username"
+            />
+            <input
+              type="password"
+              class="password_${index} form-control"
+              name="website_password"
+              placeholder="password"
+            />
+          </div>
+          <button class="btn btn-primary" type="submit">Edit Password</button>
+          </section>
+        </form>
+
+
+      </div>
         `);
       });
     },
@@ -51,7 +60,7 @@ const renderPasswords = () => {
 renderPasswords();
 
 $(".toggle_add_account").on("click", () => {
-  return $(".add_account").slideToggle();
+  return $(".add_account").slideToggle("fast");
 });
 
 $(".add_new").submit((event) => {
@@ -73,7 +82,7 @@ $(".add_new").submit((event) => {
 $(".passwords_container").on("click", ".toggle_edit", (event) => {
   event.stopImmediatePropagation();
   event.preventDefault();
-  $(event.currentTarget.nextElementSibling).slideToggle();
+  $(event.currentTarget.nextElementSibling).slideToggle("fast");
 
   const form = $(event.currentTarget.nextElementSibling).attr("class");
   const index = form.slice(-1);
@@ -92,6 +101,10 @@ $(".passwords_container").on("click", ".toggle_edit", (event) => {
       .catch((err) => {
         console.log("error from edit password request:", err);
       });
+  });
+
+  $(".passwords_container").on("click", `.close`, (event) => {
+    $(`.edit_info_${index}`)[0].style.display = "none";
   });
   return;
 });
@@ -122,12 +135,10 @@ $(".passwords_container").on("click", ".copy", (event) => {
   document.body.removeChild(test);
 });
 
-
-
 $(".passwords_container").on("submit", `.delete`, (event) => {
   event.stopImmediatePropagation();
   event.preventDefault();
-  const index = $(event.target).attr('class').slice(-1);
+  const index = $(event.target).attr("class").slice(-1);
   const website = $(`.website_name_${index}`)[0].outerText;
 
   $.post("/passwords/delete", { website })
