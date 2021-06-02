@@ -5,13 +5,19 @@ const renderPasswords = () => {
     success: function (passwords) {
       $.each(passwords, (index, password) => {
         $(".passwords_container").append(`
+
         <div class='display_password'>
+
+
         <div class="passwords-header">
           <p>${password.catagory_name}</p>
-          <div class='delete'>
-          <form method="POST" autocomplete="off" autofill="off" class="delete_${index}">
-            <button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i></button>
-          </form>
+          <div class='delete'></div>
+
+          <div class='edit_delete'>
+            <span class="toggle_edit" type="button"><i class="far fa-edit"></i></span>
+            <form method="POST" autocomplete="off" autofill="off" class="delete_${index}">
+              <span class="toggle_delete" type="submit"><i class="far fa-trash-alt"></i></span>
+            </form>
           </div>
         </div>
 
@@ -19,33 +25,32 @@ const renderPasswords = () => {
         <header class='website_name_${index}'>${password.website_name}</header>
         <p>username: ${password.website_username}</p>
         <div class = "password-field">
-        <p class="password_${index}">password: ${password.website_password}</p>
-        <div class="copy">
-          <button class="copy_${index}"><i class="fas fa-clipboard"></i></button>
-        </div>
+          <p class="password_${index}">password: ${password.website_password}</p>
+          <div class="copy">
+            <button class="copy_${index}"><i class="fas fa-clipboard"></i></button>
+          </div>
         </div>
 
 
-        <button class="btn btn-primary toggle_edit" type="button">edit</button>
 
         <form method="POST" autocomplete="off" autofill="off" class='edit_info_${index}'>
-        <section>
-        <span class="close">&times;</span>
-          <div class="form-group">
-            <input
-              type="text"
-              class="username_${index} form-control"
-              name="website_username"
-              placeholder="username"
-            />
-            <input
-              type="password"
-              class="password_${index} form-control"
-              name="website_password"
-              placeholder="password"
-            />
-          </div>
-          <button class="btn btn-primary" type="submit">Edit Password</button>
+          <section>
+            <span class="close">&times;</span>
+            <div class="form-group">
+              <input
+                type="text"
+                class="username_${index} form-control"
+                name="website_username"
+                placeholder="username"
+              />
+              <input
+                type="password"
+                class="password_${index} form-control"
+                name="website_password"
+                placeholder="password"
+              />
+            </div>
+            <button class="btn btn-primary" type="submit">Edit Password</button>
           </section>
         </form>
 
