@@ -65,7 +65,7 @@ const renderPasswords = () => {
 renderPasswords();
 
 $(".toggle_add_account").on("click", () => {
-  return $(".add_account").slideToggle("fast");
+  return $(".add_account").fadeToggle("fast");
 });
 
 $(".add_new").submit((event) => {
@@ -92,7 +92,7 @@ $(".add_new").on("click", ".close", () => {
 $(".passwords_container").on("click", ".toggle_edit", (event) => {
   event.stopImmediatePropagation();
   event.preventDefault();
-  $(event.currentTarget.nextElementSibling).fadeToggle("normal");
+  $(event.currentTarget.nextElementSibling).fadeToggle("fast");
 
   const form = $(event.currentTarget.nextElementSibling).attr("class");
   const index = form.slice(-1);
