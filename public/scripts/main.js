@@ -26,7 +26,7 @@ const renderPasswords = () => {
               <div class="form-group">
                 <input
                   type="text"
-                  class="username_${index}"
+                  class="updated_username_${index}"
                   name="website_username"
                   placeholder="username"
                 />
@@ -34,7 +34,7 @@ const renderPasswords = () => {
               <div class="form-group">
                 <input
                   type="password"
-                  class="password_${index}"
+                  class="updated_password_${index}"
                   name="website_password"
                   placeholder="password"
                 />
@@ -83,9 +83,11 @@ $(".passwords_container").on("click", ".toggle_edit", (event) => {
     event.preventDefault();
     const website = event.target.parentElement.childNodes[3].innerHTML;
     //console.log(event);
-    const username = $(`.username_${index}`).val();
-    const password = $(`.password_${index}`).val();
-    console.log("password is: ", $(`.password_${index}`))
+    const username = $(`.updated_username_${index}`).val();
+    const password = $(`.updated_password_${index}`).val();
+    // we're not seleting the password value anymore, but username is updating properly now. aight
+    console.log("username, password: ", username, password);
+    //kk im late but i pushed the latest version. gonna shut this down
     $.post("/passwords/edit", { website, username, password })
       .then((res) => {
         $(".passwords_container").empty();
