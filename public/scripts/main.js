@@ -11,7 +11,6 @@ const renderPasswords = () => {
 
         <div class="passwords-header">
           <p>${password.catagory_name}</p>
-          <div class='delete'></div>
 
           <div class='edit_delete'>
             <span class="toggle_edit" type="button"><i class="far fa-edit"></i></span>
@@ -23,7 +22,9 @@ const renderPasswords = () => {
 
 
         <header class='website_name_${index}'>${password.website_name}</header>
+
         <p>username: ${password.website_username}</p>
+
         <div class = "password-field">
           <p class="password_${index}">password: ${password.website_password}</p>
           <div class="copy">
@@ -88,7 +89,10 @@ $(".add_new").submit((event) => {
 $(".passwords_container").on("click", ".toggle_edit", (event) => {
   event.stopImmediatePropagation();
   event.preventDefault();
-  $(event.currentTarget.nextElementSibling).fadeToggle("normal");
+  // $(event.currentTarget.nextElementSibling).fadeToggle("normal");
+  const target = $(event.currentTarget.parentElement.parentElement.parentElement).children().eq(4).attr('class')
+  $(`.${target}`).fadeToggle("normal");
+
 
   const form = $(event.currentTarget.nextElementSibling).attr("class");
   const index = form.slice(-1);
@@ -141,11 +145,14 @@ $(".passwords_container").on("click", ".copy", (event) => {
   document.body.removeChild(test);
 });
 
-$(".passwords_container").on("submit", `.delete`, (event) => {
+$(".passwords_container").on("click", `.toggle_delete`, (event) => {
   event.stopImmediatePropagation();
   event.preventDefault();
-  const index = $(event.target).attr("class").slice(-1);
-  const website = $(`.website_name_${index}`)[0].outerText;
+  // const index = $(event.target).attr("class").slice(-1);
+  // const website = $(`.website_name_${index}`)[0].outerText;
+
+  const target = $(event.currentTarget.parentElement.parentElement.parentElement.parentElement).children().eq(1).attr('class');
+  website = $('.' + target)[0].outerText;
 
   $.post("/passwords/delete", { website })
     .then((res) => {
