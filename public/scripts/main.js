@@ -84,6 +84,10 @@ $(".add_new").submit((event) => {
     });
 });
 
+$(".add_new").on("click", ".close", () => {
+  $(".add_account")[0].style.display = "none";
+});
+
 //sends request to edit an existing website account
 $(".passwords_container").on("click", ".toggle_edit", (event) => {
   event.stopImmediatePropagation();
@@ -112,6 +116,13 @@ $(".passwords_container").on("click", ".toggle_edit", (event) => {
   $(".passwords_container").on("click", `.close`, (event) => {
     $(`.edit_info_${index}`)[0].style.display = "none";
   });
+
+  $(window).on("click", (event) => {
+    if (event.target !== $(`.edit_info_${index}`)) {
+      $(`.edit_info_${index}`)[0].style.display = "none";
+    }
+  });
+
   return;
 });
 
