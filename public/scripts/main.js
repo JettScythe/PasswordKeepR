@@ -101,7 +101,7 @@ $(".passwords_container").on("click", ".copy", (event) => {
   event.preventDefault();
 
   const classOfButton = $(event.currentTarget.children[0]).attr("class");
-  
+
   //this is only going to work if the index is single digit. will have to fix this
   const index = classOfButton.slice(-1);
 
@@ -128,7 +128,7 @@ $(".passwords_container").on("submit", `.delete`, (event) => {
   event.preventDefault();
   const index = $(event.target).attr('class').slice(-1);
   const website = $(`.website_name_${index}`)[0].outerText;
-  
+
   $.post("/passwords/delete", { website })
     .then((res) => {
       $(".passwords_container").empty();
