@@ -26,7 +26,7 @@ const renderPasswords = () => {
               <div class="form-group">
                 <input
                   type="text"
-                  class="username_${index}"
+                  class="updated_username_${index}"
                   name="website_username"
                   placeholder="username"
                 />
@@ -34,7 +34,7 @@ const renderPasswords = () => {
               <div class="form-group">
                 <input
                   type="password"
-                  class="password_${index}"
+                  class="updated_password_${index}"
                   name="website_password"
                   placeholder="password"
                 />
