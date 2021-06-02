@@ -83,7 +83,7 @@ $(".add_new").submit((event) => {
 $(".passwords_container").on("click", ".toggle_edit", (event) => {
   event.stopImmediatePropagation();
   event.preventDefault();
-  $(event.currentTarget.nextElementSibling).slideToggle("fast");
+  $(event.currentTarget.nextElementSibling).fadeToggle("normal");
 
   const form = $(event.currentTarget.nextElementSibling).attr("class");
   const index = form.slice(-1);
