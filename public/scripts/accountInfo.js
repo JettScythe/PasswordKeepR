@@ -6,8 +6,11 @@ $('.edit_email.edit_button').on('click', () => {
 $('.email_cancel').on('click', () => {
     $('.edit_email').toggle();
 })
-$('.edit_email.submit.button').on('click', (event) => {
+$('.detail_email').on('submit', (event) => {
+  event.preventDefault();
+  console.log('submit registered');
   const email = $('.new_email').val();
+  console.log(email);
   $.post('/passwords/account_info/email', { email })
   .then(() => {
     $('.edit_email').css('display','none');
@@ -21,11 +24,13 @@ $('.edit_email.submit.button').on('click', (event) => {
 //edit password
 $('.edit_password.edit_button').on('click', () => {
   $('.edit_password').toggle();
+  $('.new_password').focus();
 })
 $('.password_cancel').on('click', () => {
     $('.edit_password').toggle();
 })
-$('.edit_password.submit.button').on('click', (event) => {
+$('.detail_password').on('submit', (event) => {
+  event.preventDefault();
   const password = $('.new_password').val();
   $.post('/passwords/account_info/password', { password })
   .then(() => {
@@ -40,11 +45,13 @@ $('.edit_password.submit.button').on('click', (event) => {
 //edit name
 $('.edit_name.edit_button').on('click', () => {
   $('.edit_name').toggle();
+  $('.new_name').focus();
 })
 $('.name_cancel').on('click', () => {
     $('.edit_name').toggle();
 })
-$('.edit_name.submit.button').on('click', (event) => {
+$('.detail_name').on('submit', (event) => {
+  event.preventDefault();
   const name = $('.new_name').val();
   $.post('/passwords/account_info/name', { name })
   .then(() => {
