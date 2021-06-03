@@ -1,7 +1,8 @@
 // See: https://sass-lang.com/
 .home {
-  padding: 5em;
+  padding: 7em;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   background-image: url(/images/safe.png);
   min-height: 100vh;
@@ -12,16 +13,17 @@
   .title {
     display: flex;
     flex-direction: column;
-    width: 75%;
     text-align: center;
     align-items: center;
     justify-content: center;
     color: white;
     -webkit-text-stroke: 0.07em black;
+    margin-left: 50%;
 
     h1 {
       font-size: 4em;
       font-weight: bold;
+      
     }
 
     p {
@@ -39,7 +41,7 @@
     background-color: #666;
     height: 500px;
     align-content: center;
-    margin: auto;
+    margin-left: 62.5%;
     box-shadow: 10px 20px;
     border-radius: 10px;
 
