@@ -27,7 +27,7 @@ const renderPasswords = () => {
 
         <div class = "password-field">
           <p class="password_${index}">
-          password: <span class="hide">${password.website_password}</span>
+         <span class="hide">${password.website_password}</span>
           <span class="secret">********<span>
           </p>
           <div class="copy">
@@ -82,7 +82,7 @@ $(".add_new").submit((event) => {
   $.post("/passwords/new", { name, username, password, category })
     .then((res) => {
       $(".passwords_container").empty();
-      $('.add_account').fadeToggle();
+      $(".add_account").fadeToggle();
       renderPasswords();
     })
     .catch((err) => {
