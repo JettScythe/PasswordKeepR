@@ -23,7 +23,7 @@ const renderPasswords = () => {
 
         <header class='website_name_${index}'>${password.website_name}</header>
 
-        <p>username: ${password.website_username}</p>
+        <p class='display_username'>${password.website_username}</p>
 
         <div class = "password-field">
           <p class="password_${index}">password: ${password.website_password}</p>
@@ -97,8 +97,6 @@ $(".passwords_container").on("click", ".toggle_edit", (event) => {
   const target = $(event.currentTarget.parentElement.parentElement.parentElement).children().eq(4).attr('class')
   $(`.${target}`).fadeToggle("normal");
 
-  $(event.currentTarget.nextElementSibling).fadeToggle("fast");
-
   const form = $(event.currentTarget.nextElementSibling).attr("class");
   const index = form.slice(-1);
 
@@ -122,17 +120,19 @@ $(".passwords_container").on("click", ".toggle_edit", (event) => {
     $(`.edit_info_${index}`)[0].style.display = "none";
   });
 
-  $(window).on("click", (event) => {
-    if (event.target !== $(`.edit_info_${index}`)) {
-      $(`.edit_info_${index}`)[0].style.display = "none";
-    }
-  });
+  // $(window).on("click", (event) => {
+  //   if (event.target !== $(`.edit_info_${index}`)) {
+  //     $(`.edit_info_${index}`)[0].style.display = "none";
+  //   }
+  // });
 
   return;
 });
 
 const copybtnDOM = document.getElementById("copy");
 
+
+//copy password
 $(".passwords_container").on("click", ".copy", (event) => {
   event.preventDefault();
 
