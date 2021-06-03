@@ -78,6 +78,7 @@ $(".add_new").submit((event) => {
   $.post("/passwords/new", { name, username, password, category })
     .then((res) => {
       $(".passwords_container").empty();
+      $('.add_account').fadeToggle();
       renderPasswords();
     })
     .catch((err) => {
