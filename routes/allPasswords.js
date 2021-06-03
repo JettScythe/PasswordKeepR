@@ -43,7 +43,6 @@ module.exports = (db) => {
         return res.rows;
       })
       .catch((err) => console.log("error from post request:", err));
-    // res.redirect('/passwords');
     res.send("success");
   });
 
