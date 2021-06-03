@@ -69,6 +69,7 @@ const renderPasswords = () => {
 renderPasswords();
 
 $(".toggle_add_account").on("click", () => {
+  $('.add_new')[0].reset();
   return $(".add_account").fadeToggle("fast");
 });
 
