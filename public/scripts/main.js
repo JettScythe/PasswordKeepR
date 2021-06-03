@@ -94,7 +94,12 @@ $(".passwords_container").on("click", ".toggle_edit", (event) => {
   event.stopImmediatePropagation();
   event.preventDefault();
   // $(event.currentTarget.nextElementSibling).fadeToggle("normal");
-  const target = $(event.currentTarget.parentElement.parentElement.parentElement).children().eq(4).attr('class')
+  const target = $(
+    event.currentTarget.parentElement.parentElement.parentElement
+  )
+    .children()
+    .eq(4)
+    .attr("class");
   $(`.${target}`).fadeToggle("normal");
 
   const form = $(event.currentTarget.nextElementSibling).attr("class");
@@ -131,7 +136,6 @@ $(".passwords_container").on("click", ".toggle_edit", (event) => {
 
 const copybtnDOM = document.getElementById("copy");
 
-
 //copy password
 $(".passwords_container").on("click", ".copy", (event) => {
   event.preventDefault();
@@ -163,8 +167,13 @@ $(".passwords_container").on("click", `.toggle_delete`, (event) => {
   // const index = $(event.target).attr("class").slice(-1);
   // const website = $(`.website_name_${index}`)[0].outerText;
 
-  const target = $(event.currentTarget.parentElement.parentElement.parentElement.parentElement).children().eq(1).attr('class');
-  website = $('.' + target)[0].outerText;
+  const target = $(
+    event.currentTarget.parentElement.parentElement.parentElement.parentElement
+  )
+    .children()
+    .eq(1)
+    .attr("class");
+  website = $("." + target)[0].outerText;
 
   $.post("/passwords/delete", { website })
     .then((res) => {
