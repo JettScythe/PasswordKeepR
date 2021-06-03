@@ -4,11 +4,7 @@ const router  = express.Router();
 module.exports = (db) => {
   router.post('/', (req, res) => {
     body = req.body;
-    console.log("website body: ", body.website)
-    db.query(`DELETE FROM passwords WHERE website_name = $1`, [body.website])
-    .then(data => {
-      console.log(data);
-    });
+    db.query(`DELETE FROM passwords WHERE website_name = $1;`, [body.website]);
     res.send('');
   })
   return router;

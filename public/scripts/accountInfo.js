@@ -8,9 +8,7 @@ $('.email_cancel').on('click', () => {
 })
 $('.detail_email').on('submit', (event) => {
   event.preventDefault();
-  console.log('submit registered');
   const email = $('.new_email').val();
-  console.log(email);
   $.post('/passwords/account_info/email', { email })
   .then(() => {
     $('.edit_email').css('display','none');

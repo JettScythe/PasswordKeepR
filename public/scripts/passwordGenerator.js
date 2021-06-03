@@ -65,7 +65,6 @@ $(document).ready(function () {
       includeSymbols,
     };
     const password = generatePassword(options);
-    console.log(`password is ${password}`);
     $("#new_password").val(password);
     // resultDOM.innerText = password;
   });

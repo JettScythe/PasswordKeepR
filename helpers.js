@@ -29,7 +29,6 @@ const getUserByEmail = async function (email) {
       email,
     ]);
     if (user.rows.length === 0) {
-      // console.log("this bitch is undefined");
       return null;
     }
     return user.rows[0];

@@ -7,7 +7,6 @@ module.exports = (obj) => {
     obj
       .authenticateUser(email, password)
       .then((user) => {
-        console.log("user:", user);
         if (!user) {
           res.render("index.ejs", { error: true });
           return;
