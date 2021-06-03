@@ -26,7 +26,10 @@ const renderPasswords = () => {
         <p class='display_username'>${password.website_username}</p>
 
         <div class = "password-field">
-          <p class="password_${index}">password: ${password.website_password}</p>
+          <p class="password_${index}">
+          password: <span class="hide">${password.website_password}</span>
+          <span class="secret">********<span>
+          </p>
           <div class="copy">
             <button class="copy_${index}"><i class="fas fa-clipboard"></i></button>
           </div>
