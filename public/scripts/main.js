@@ -40,6 +40,7 @@ const renderPasswords = () => {
         <form method="POST" autocomplete="off" autofill="off" class='edit_info_${index}'>
           <section>
             <span class="close">&times;</span>
+            <h3>${password.website_name}</h3>
             <div class="form-group">
               <input
                 type="text"
