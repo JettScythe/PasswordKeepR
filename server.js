@@ -73,19 +73,19 @@ app.use("/passwords/delete", deletePasswordRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  const isLoggedIn = function(req) {
+  const isLoggedIn = function (req) {
     if (req.session.organization_id) return req.session.user_id;
     return false;
   };
   const user_id = isLoggedIn(req);
 
   if (user_id) {
-    res.redirect('/passwords');
+    res.redirect("/passwords");
   } else {
-      res.render("index", { error: false });
-    }
+    res.render("index", { error: false });
+  }
 });
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`);
+  console.log(`Server started on port ${PORT}`);
 });

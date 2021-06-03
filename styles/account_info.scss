@@ -45,7 +45,6 @@
     padding: 14px;
     background-color: rgb(238, 238, 238);
 
-
     * {
       margin: 0;
     }
@@ -63,13 +62,11 @@
       font-weight: 525;
     }
 
-    //2nd column: where the info is displayed
     .section_info {
       width: 250px;
       input {
         width: 80%;
         border: none;
-        // border-bottom: solid grey 1px;
         background-color: rgb(238, 238, 238);
         outline: none;
       }
@@ -80,7 +77,8 @@
     .submit {
       display: none;
     }
-    .submit.button, .cancel {
+    .submit.button,
+    .cancel {
       border-radius: 2.5px;
       border: 1px solid grey;
       width: 55px;

@@ -70,7 +70,7 @@ const renderPasswords = () => {
 renderPasswords();
 
 $(".toggle_add_account").on("click", () => {
-  $('.add_new')[0].reset();
+  $(".add_new")[0].reset();
   return $(".add_account").fadeToggle("fast");
 });
 
@@ -99,7 +99,6 @@ $(".add_new").on("click", ".close", () => {
 $(".passwords_container").on("click", ".toggle_edit", (event) => {
   event.stopImmediatePropagation();
   event.preventDefault();
-  // $(event.currentTarget.nextElementSibling).fadeToggle("normal");
   const target = $(
     event.currentTarget.parentElement.parentElement.parentElement
   )
@@ -131,12 +130,6 @@ $(".passwords_container").on("click", ".toggle_edit", (event) => {
     $(`.edit_info_${index}`)[0].style.display = "none";
   });
 
-  // $(window).on("click", (event) => {
-  //   if (event.target !== $(`.edit_info_${index}`)) {
-  //     $(`.edit_info_${index}`)[0].style.display = "none";
-  //   }
-  // });
-
   return;
 });
 
@@ -148,7 +141,6 @@ $(".passwords_container").on("click", ".copy", (event) => {
 
   const classOfButton = $(event.currentTarget.children[0]).attr("class");
 
-  //this is only going to work if the index is single digit. will have to fix this
   const index = classOfButton.slice(-1);
 
   const passwordToCopy = $(`.password_${index}`).text().split("         ")[1];
@@ -157,7 +149,6 @@ $(".passwords_container").on("click", ".copy", (event) => {
   if (!passwordToCopy) return;
 
   // Copy Functionality
-
   const test = document.createElement("textarea");
   document.body.appendChild(test);
   test.value = passwordToCopy;
@@ -170,8 +161,6 @@ $(".passwords_container").on("click", ".copy", (event) => {
 $(".passwords_container").on("click", `.toggle_delete`, (event) => {
   event.stopImmediatePropagation();
   event.preventDefault();
-  // const index = $(event.target).attr("class").slice(-1);
-  // const website = $(`.website_name_${index}`)[0].outerText;
 
   const target = $(
     event.currentTarget.parentElement.parentElement.parentElement.parentElement

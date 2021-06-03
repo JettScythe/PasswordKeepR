@@ -66,8 +66,5 @@ $(document).ready(function () {
     };
     const password = generatePassword(options);
     $("#new_password").val(password);
-    // resultDOM.innerText = password;
   });
 });
-
-//written by nemo011 on https://www.studytonight.com/post/building-a-password-generator-with-javascript and adapted by Zain, Moses & Jett

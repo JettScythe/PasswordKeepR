@@ -39,11 +39,9 @@ const getUserByEmail = async function (email) {
 exports.getUserByEmail = getUserByEmail;
 
 const authenticateUser = async function (email, password) {
-  // retrieve the user with that email
   try {
     let user = await getUserByEmail(email);
     if (await argon2.verify(user.user_password, password)) {
-      console.log("authenticate user success!");
       return user;
     } else {
       user = null;
@@ -57,25 +55,29 @@ exports.authenticateUser = authenticateUser;
 
 const updateUserEmail = async function (email, id) {
   try {
-    const updatedUser = await db.query(`UPDATE users
+    const updatedUser = await db.query(
+      `UPDATE users
     SET email = $1
     WHERE id = $2
     RETURNING *;`,
-    [email, id]);
+      [email, id]
+    );
     return updatedUser;
   } catch (err) {
-    console.error(err.message)
+    console.error(err.message);
   }
 };
 exports.updateUserEmail = updateUserEmail;
 
 const updateUserName = async function (name, id) {
   try {
-    const updatedUser = await db.query(`UPDATE users
+    const updatedUser = await db.query(
+      `UPDATE users
     SET name = $1
     WHERE id = $2
     RETURNING *;`,
-    [name, id]);
+      [name, id]
+    );
     return updatedUser;
   } catch (err) {
     console.error(err.message);
@@ -86,11 +88,13 @@ exports.updateUserName = updateUserName;
 const updateUserPassword = async function (password, id) {
   try {
     const hash = await argon2.hash(password);
-    const updatedUser = await db.query(`UPDATE users
+    const updatedUser = await db.query(
+      `UPDATE users
     SET user_password = $1
     WHERE id = $2
     RETURNING *;`,
-    [hash, id]);
+      [hash, id]
+    );
     return updatedUser;
   } catch (err) {
     console.error(err.message);

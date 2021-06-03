@@ -24,13 +24,14 @@ module.exports = (db) => {
   });
 
   router.post("/", async (req, res) => {
-    console.log("it made it to here....", req.body);
     const body = req.body;
     const orgID = req.session.organization_id;
 
-    const categorySelect = await db.query(`SELECT id FROM catagories WHERE name = $1`, [body.category]);
+    const categorySelect = await db.query(
+      `SELECT id FROM catagories WHERE name = $1`,
+      [body.category]
+    );
     categoryID = categorySelect.rows[0].id;
-    
 
     db.query(
       `INSERT INTO passwords (website_name, website_username, website_password, organization_id, catagory_id)
@@ -42,7 +43,6 @@ module.exports = (db) => {
         return res.rows;
       })
       .catch((err) => console.log("error from post request:", err));
-    // res.redirect('/passwords');
     res.send("success");
   });
 
