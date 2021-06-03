@@ -76,7 +76,6 @@ const updateUserName = async function (name, id) {
     WHERE id = $2
     RETURNING *;`,
     [name, id]);
-    console.log(updatedUser);
     return updatedUser;
   } catch (err) {
     console.error(err.message);
