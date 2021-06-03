@@ -10,6 +10,7 @@ module.exports = (db, obj) => {
     .then(userInfo => {
       const info = userInfo.rows[0];
       info.user_id = info.id;
+      console.log(info);
       res.render('account_info', info);
     }).catch(err => {
       console.log('error from /api/passwords/account_info:', err);
