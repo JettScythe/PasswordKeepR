@@ -151,7 +151,7 @@ $(".passwords_container").on("click", ".copy", (event) => {
   //this is only going to work if the index is single digit. will have to fix this
   const index = classOfButton.slice(-1);
 
-  const passwordToCopy = $(`.password_${index}`).text();
+  const passwordToCopy = $(`.password_${index}`).text().split("         ")[1];
 
   // Edge Case when Password is Empty
   if (!passwordToCopy) return;
