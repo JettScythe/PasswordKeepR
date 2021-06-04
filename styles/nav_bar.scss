@@ -10,7 +10,13 @@
   .nav_container {
     display: flex;
     flex-direction: row;
+    position: relative;
   }
 }
 
 
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+}
